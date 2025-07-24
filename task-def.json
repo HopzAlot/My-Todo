@@ -1,0 +1,21 @@
+{
+  "family": "todolist-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["FARGATE"],
+  "cpu": "256",
+  "memory": "512",
+  "executionRoleArn": "arn:aws:iam::247487031027:role/ecsTaskExecutionRole",
+  "containerDefinitions": [
+    {
+      "name": "todolist",
+      "image": "247487031027.dkr.ecr.us-east-1.amazonaws.com/todolist:latest",
+      "portMappings": [
+        {
+          "containerPort": 8000,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true
+    }
+  ]
+}
