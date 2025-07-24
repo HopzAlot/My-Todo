@@ -1,5 +1,29 @@
-.env
+# Byte-compiled / cache files
 __pycache__/
-*.pyc
+*.py[cod]
+*.pyo
+
+# Django database
 db.sqlite3
+
+# Python environment
+.env
+*.env
+
+# Static files
 /static/
+media/
+
+# Docker
+docker-compose.yml
+/backend/Dockerfile
+
+# AWS / ECS
+task-def.json
+ecs-trust-policy.json
+
+# VS Code and editor junk
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
