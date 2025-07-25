@@ -44,7 +44,7 @@ This is a learning project, but contributions and suggestions are always welcome
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/HopzAlot/My-Todo.git
-   cd Backend
+   cd My-Todo
    ```
 2. **Create and activate a virtual environment:**
 
