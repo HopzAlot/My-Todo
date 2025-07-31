@@ -18,13 +18,13 @@ phases:
       - aws s3 cp s3://todolist-devops-cicd/todolist/.env backend/.env || echo ".env file not found in S3"
       - echo "Running Django migrations"
       - cd backend
-      - python manage.py makemigrations || echo "No new migrations to apply"
-      - python manage.py migrate
+      - python3 manage.py makemigrations || echo "No new migrations to apply"
+      - python3 manage.py migrate
 
   build:
     commands:
       - echo "Collecting static files"
-      - python manage.py collectstatic --noinput || echo "No static files to collect"
+      - python3 manage.py collectstatic --noinput || echo "No static files to collect"
 
   post_build:
     commands:
