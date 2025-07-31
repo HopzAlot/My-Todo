@@ -15,7 +15,7 @@ phases:
   pre_build:
     commands:
       - echo "Downloading .env file from S3"
-      - aws s3 cp s3://todolist-devops-cicd/todolist/.env .env || echo ".env file not found in S3"
+      - aws s3 cp s3://todolist-devops-cicd/todolist/.env backend/.env || echo ".env file not found in S3"
       - echo "Running Django migrations"
       - cd backend
       - python manage.py makemigrations || echo "No new migrations to apply"
