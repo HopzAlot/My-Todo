@@ -9,12 +9,7 @@ phases:
       - pip install --upgrade pip
       # Authenticate with AWS CodeArtifact (adjust values as needed)
       - echo "🔐 Logging in to CodeArtifact..."
-      - aws codeartifact login \
-          --tool pip \
-          --repository todolist-devops-cicd \
-          --domain todolist \
-          --domain-owner 123456789012 \
-          --region ap-south-1
+      - aws codeartifact login --tool pip --repository todolist-devops-cicd --domain todolist --domain-owner 123456789012 --region ap-south-1
       - echo "📦 Installing requirements from CodeArtifact..."
       - pip install -r backend/requirements.txt
 
