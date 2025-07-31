@@ -5,29 +5,30 @@ phases:
     runtime-versions:
       python: 3.9
     commands:
-      - echo Installing pip dependencies
+      - echo "Installing pip dependencies"
       - pip install --upgrade pip
+      - echo "Logging in to CodeArtifact"
       - aws codeartifact login --tool pip --repository todolist-devops-cicd --domain todolist --domain-owner 123456789012 --region ap-south-1
-      - echo Installing requirements
+      - echo "Installing requirements"
       - pip install -r backend/requirements.txt
 
   pre_build:
     commands:
-      - echo Downloading .env file from S3
-      - aws s3 cp s3://todolist-devops-cicd/todolist/.env backend/.env || echo Warning: .env file not found in S3
-      - echo Running Django migrations
+      - echo "Downloading .env file from S3"
+      - aws s3 cp s3://todolist-devops-cicd/todolist/.env backend/.env || echo ".env file not found in S3"
+      - echo "Running Django migrations"
       - cd backend
-      - python manage.py makemigrations || echo No new migrations to apply
+      - python manage.py makemigrations || echo "No new migrations to apply"
       - python manage.py migrate
 
   build:
     commands:
-      - echo Collecting static files
-      - python manage.py collectstatic --noinput || echo No static files to collect
+      - echo "Collecting static files"
+      - python manage.py collectstatic --noinput || echo "No static files to collect"
 
   post_build:
     commands:
-      - echo Build completed at $(date)
+      - echo "Build completed at $(date)"
 
 artifacts:
   files:
