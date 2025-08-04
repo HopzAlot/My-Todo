@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
 
-load_dotenv(BASE_DIR/ ".env")
+load_dotenv(BASE_DIR/".env")
 
 
 
@@ -52,7 +52,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'todolist.wsgi.application'
 
-if os.getenv("SKIP_DB", "false") == "true":
+if os.getenv("SKIP_DB") == "true":
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
