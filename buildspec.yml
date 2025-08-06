@@ -34,7 +34,7 @@ phases:
       - mkdir -p packaged-output
       - cp -r backend scripts appspec.yml .env packaged-output/
       - cd packaged-output
-      - zip -r ../todo-deploy.zip .
+      - zip -r ../todolist.zip .
       - cd ..
       - echo "Listing files in build root:"
       - ls -l
