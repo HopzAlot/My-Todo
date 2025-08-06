@@ -36,6 +36,8 @@ phases:
       - cd packaged-output
       - zip -r ../todo-deploy.zip .
       - cd ..
+      - echo "Listing files in build root:"
+      - ls -l
 
   post_build:
     commands:
