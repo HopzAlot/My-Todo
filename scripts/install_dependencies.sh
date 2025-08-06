@@ -5,11 +5,28 @@ echo "Updating system packages..."
 sudo yum update -y
 
 echo "Enabling python3.8 in amazon-linux-extras..."
-sudo amazon-linux-extras enable python3.8
+sudo amazon-linux-extras enable python3.8 -y
 sudo yum clean metadata
 
 echo "Installing Python 3.8 and pip..."
 sudo yum install -y python3.8 python3.8-venv python3.8-pip
+
+echo "Installing SQLite 3.38.5 from source..."
+
+cd /tmp
+curl -O https://www.sqlite.org/2022/sqlite-autoconf-3380500.tar.gz
+tar xzf sqlite-autoconf-3380500.tar.gz
+cd sqlite-autoconf-3380500
+
+./configure --prefix=/usr/local
+make
+sudo make install
+
+echo "/usr/local/lib" | sudo tee /etc/ld.so.conf.d/sqlite3.conf
+sudo ldconfig
+
+echo "Installed SQLite version:"
+sqlite3 --version
 
 echo "Checking Python version..."
 python3.8 --version
