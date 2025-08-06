@@ -4,12 +4,16 @@ set -e  # Exit on first error
 echo "Updating system packages..."
 sudo yum update -y
 
+echo "Installing development tools and gcc..."
+sudo yum groupinstall -y "Development Tools"
+sudo yum install -y gcc
+
 echo "Enabling python3.8 in amazon-linux-extras..."
 sudo amazon-linux-extras enable python3.8 -y
 sudo yum clean metadata
 
 echo "Installing Python 3.8 and pip..."
-sudo yum install -y python3.8 python3.8-venv python3.8-pip
+sudo yum install -y python3.8
 
 echo "Installing SQLite 3.38.5 from source..."
 
