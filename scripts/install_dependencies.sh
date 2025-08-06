@@ -5,11 +5,10 @@ echo "Installing Python 3 and pip..."
 sudo yum update -y
 sudo yum install -y python3 python3-pip
 
-# Ensure the base project directory exists
-mkdir -p /home/ec2-user/todo
-
-echo "Navigating to project directory..."
-cd /home/ec2-user/todo/backend
+# Navigate to the deployment root directory (one level up from the scripts folder)
+DEPLOY_ROOT="$(dirname "$0")/.."
+echo "Navigating to project directory at $DEPLOY_ROOT/backend"
+cd "$DEPLOY_ROOT/backend"
 
 echo "Creating virtual environment..."
 python3 -m venv venv

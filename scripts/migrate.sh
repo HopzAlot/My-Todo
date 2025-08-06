@@ -3,8 +3,9 @@ set -e  # Exit immediately if any command fails
 
 echo "Running Django migrations..."
 
-# Go to the backend directory
-cd /home/ec2-user/todo/backend
+# Navigate to backend folder relative to the script location
+DEPLOY_ROOT="$(dirname "$0")/.."
+cd "$DEPLOY_ROOT/backend"
 
 # Activate virtual environment
 if [ -d "venv" ]; then

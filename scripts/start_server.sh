@@ -1,9 +1,11 @@
 #!/bin/bash
-set -e  # Exit immediately on error
+set -e  # Exit immediately if any command fails
 
 echo "🚀 Starting Django server..."
 
-cd /home/ec2-user/todo/backend
+# Navigate to backend folder relative to the script location
+DEPLOY_ROOT="$(dirname "$0")/.."
+cd "$DEPLOY_ROOT/backend"
 
 # Activate virtual environment
 if [ -d "venv" ]; then
@@ -21,4 +23,4 @@ pkill -f "manage.py runserver" || echo "No existing server running."
 echo "Launching Django development server..."
 nohup python manage.py runserver 0.0.0.0:8000 > output.log 2>&1 &
 
-echo " Django server started successfully on port 8000."
+echo "✅ Django server started successfully on port 8000."
