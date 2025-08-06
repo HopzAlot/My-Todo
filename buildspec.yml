@@ -33,7 +33,7 @@ phases:
       - chmod +x scripts/*.sh
       - echo "Packaging deployment artifact..."
       - mkdir -p packaged-output
-      - cp -r backend scripts appspec.yml packaged-output/
+      - cp -r backend scripts appspec.yml .env packaged-output/
       - cd packaged-output
       - zip -r ../todo-deploy.zip .
       - cd ..
