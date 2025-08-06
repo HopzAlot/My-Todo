@@ -36,7 +36,7 @@ View list of active and completed tasks
 
 Basic form validation and error handling
 
-## 🤝 Dockerized Porject
+## 🫙 Dockerized Porject
 You can fetch the docker image from my DockerHub:
 https://hub.docker.com/r/hopzalot/todolist
 
