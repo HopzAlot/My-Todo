@@ -15,10 +15,6 @@ else
   exit 1
 fi
 
-# Confirm Python + SQLite versions being used
-echo "🐍 Python version: $(python --version)"
-echo "🗃️ SQLite version: $(python -c 'import sqlite3; print(sqlite3.sqlite_version)')"
-
 # Run Django migrations
 python manage.py migrate
 
