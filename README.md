@@ -22,9 +22,9 @@ This project allowed me to:
 
 As part of extending this project and exploring **DevOps methodologies**, here's what I'm planning next:
 
-- **Cloud Hosting:** Deploy the site to a cloud platform like AWS, Azure, or Heroku.
-- **CI/CD Pipeline:** Set up an automated Continuous Integration and Continuous Deployment workflow to streamline updates and testing.
-- **Dockerization:** Containerize the application using **Docker** to ensure consistent and portable environments.
+- **Cloud Hosting:** Deploy the site to a cloud platform like AWS, Azure, or Heroku. ✅
+- **CI/CD Pipeline:** Set up an automated Continuous Integration and Continuous Deployment workflow to streamline updates and testing. ✅
+- **Dockerization:** Containerize the application using **Docker** to ensure consistent and portable environments. ✅
 - **Infrastructure as Code (IaC):** Use **Terraform** to automate and manage infrastructure, making the deployment process more scalable and reproducible.
 
 ## 📌 Features
