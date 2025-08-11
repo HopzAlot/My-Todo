@@ -1,5 +1,4 @@
 version: 0.2
-
 phases:
   install:
     runtime-versions:
@@ -11,7 +10,6 @@ phases:
       - aws codeartifact login --tool pip --repository todolist-devops-cicd --domain todolist --domain-owner 247487031027 --region ap-south-1
       - echo "Installing requirements"
       - pip install -r backend/requirements.txt
-
   pre_build:
     commands:
       - echo "Downloading .env file from S3"
@@ -21,7 +19,6 @@ phases:
       - python3 manage.py makemigrations || echo "No new migrations to apply"
       - python3 manage.py migrate
       - cd ..
-
   build:
     commands:
       - echo "Collecting static files"
@@ -30,17 +27,18 @@ phases:
       - cd ..
       - echo "Making shell scripts executable"
       - chmod +x scripts/*.sh
-      - echo "Packaging deployment artifact..."
+      - echo "Copying files to packaged-output directory"
       - mkdir -p packaged-output
       - cp -r backend scripts appspec.yml .env packaged-output/
+      - echo "Listing packaged-output contents"
+      - ls -l packaged-output
+      - echo "Creating zip file"
       - cd packaged-output
       - zip -r ../todolist.zip .
       - cd ..
-      - echo "Listing files in build root:"
-      - ls -l
-
-  post_build:
-    commands:
-      - echo "Uploading todolist.zip to S3 manually..."
-      - aws s3 cp todolist.zip s3://todolist-devops-cicd/todolist.zip
-      - echo "Build completed at $(date)"
+      - echo "Verifying zip file was created"
+      - ls -la todolist.zip
+artifacts:
+  name: todolist-$(date +%Y-%m-%d)
+  files:
+    - todolist.zip
