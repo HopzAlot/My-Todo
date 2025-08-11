@@ -34,7 +34,7 @@ phases:
       - ls -l packaged-output
       - echo "Creating zip file"
       - cd packaged-output
-      - zip -r ../todolist.zip .
+      - zip -r ../todolist.zip *
       - cd ..
       - echo "Verifying zip file was created"
       - ls -la todolist.zip
