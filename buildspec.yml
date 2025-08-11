@@ -45,7 +45,7 @@ phases:
       - aws s3 cp todolist.zip s3://todolist-devops-cicd/todolist.zip
       - echo "Build completed at $(date)"
 
-  artifacts:
+artifacts:
   files:
     - BuildArtif.zip
   discard-paths: yes
