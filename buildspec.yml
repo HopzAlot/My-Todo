@@ -44,8 +44,3 @@ phases:
       - echo "Uploading todolist.zip to S3 manually..."
       - aws s3 cp todolist.zip s3://todolist-devops-cicd/todolist.zip
       - echo "Build completed at $(date)"
-
-artifacts:
-  files:
-    - todolist.zip
-  discard-paths: yes
