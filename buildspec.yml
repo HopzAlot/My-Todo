@@ -32,13 +32,22 @@ phases:
       - cp -r backend scripts appspec.yml .env packaged-output/
       - echo "Listing packaged-output contents"
       - ls -l packaged-output
-      - echo "Creating zip file"
+      - echo "Creating zip file with full debugging"
       - cd packaged-output
-      - zip -r ../todolist.zip .
+      - echo "Current directory: $(pwd)"
+      - echo "Files to zip:"
+      - find . -type f
+      - zip -r ../todolist.zip . -v
       - cd ..
       - echo "Verifying zip file was created"
       - ls -la todolist.zip
+      - echo "Testing zip file integrity"
+      - unzip -t todolist.zip
+      - echo "Zip file contents:"
+      - unzip -l todolist.zip
+      - echo "File type check:"
+      - file todolist.zip
 artifacts:
-  name: todolist-$(date +%Y-%m-%d)
   files:
     - todolist.zip
+  name: todolist.zip
