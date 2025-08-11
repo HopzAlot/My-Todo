@@ -30,16 +30,17 @@ phases:
       - cd ..
       - echo "Making shell scripts executable"
       - chmod +x scripts/*.sh
-      - echo "Copying files to packaged-output directory"
+      - echo "Packaging deployment artifact..."
       - mkdir -p packaged-output
       - cp -r backend scripts appspec.yml .env packaged-output/
-      - echo "Listing packaged-output contents"
-      - ls -l packaged-output
-      - echo "Creating zip file"
       - cd packaged-output
       - zip -r ../todolist.zip .
       - cd ..
+      - echo "Listing files in build root:"
+      - ls -l
 
-artifacts:
-  files:
-    - todolist.zip
+  post_build:
+    commands:
+      - echo "Uploading todolist.zip to S3 manually..."
+      - aws s3 cp todolist.zip s3://todolist-devops-cicd/todolist.zip
+      - echo "Build completed at $(date)"
