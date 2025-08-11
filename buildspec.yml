@@ -47,5 +47,5 @@ phases:
 
 artifacts:
   files:
-    - BuildArtif.zip
+    - todolist.zip
   discard-paths: yes
